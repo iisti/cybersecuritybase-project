@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<!--Added-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Registered</title>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <div>
+            <h2>Registered participants</h2>
+            <ul>
+                <li>Name Address</li>
+                <li th:each="person : ${registered}" th:text="${person.name} + ' ' + ${person.address}">Participant</li>
+            </ul>
+        </div>
+    </body>
+</html>
+

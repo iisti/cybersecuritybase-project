@@ -1,0 +1,89 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package sec.project.domain;
+
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.domain.AbstractPersistable;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import sec.project.repository.SiteuserRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+/**
+ *
+ * @author iisti
+ */
+@Entity
+public class Siteuser extends AbstractPersistable<Long> {
+
+    //@Autowired PasswordEncoder passwordEncoder;
+    //@Autowired private SiteuserRepository siteuserRepository;
+    
+    @Column(unique = true)
+    private String username;
+    private String password;
+    private int loginAttempts;
+
+    
+    public Siteuser() {
+        this.username = "username";//siteuserRepository.count() + 1;
+        // president
+        this.password = "$2a$10$nKOFU.4/iK9CqDIlBkmMm.WZxy2XKdUSlImsG8iKsAP57GMcXwLTS";
+        this.loginAttempts = 0;
+    }
+    
+    public Siteuser(String username, String password) {
+        //this();
+        this.username = username;
+        this.password = password;
+        this.loginAttempts = 0;
+    }
+
+    //@OneToMany(mappedBy = "user")
+    /*
+    private List<FileObject> fileObjects;
+
+    public List<FileObject> getFileObjects() {
+        return fileObjects;
+    }
+
+    public void setFileObjects(List<FileObject> fileObjects) {
+        this.fileObjects = fileObjects;
+    }*/
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getLoginAttempts() {
+        return this.loginAttempts;
+    }
+    
+    public void zeroLoginAttempts() {
+        this.loginAttempts = 0;
+    }
+    
+    public void addLoginAttempts() {
+        this.loginAttempts++;
+    }
+    
+}

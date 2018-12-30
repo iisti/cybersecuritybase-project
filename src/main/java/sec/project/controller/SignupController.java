@@ -2,6 +2,7 @@ package sec.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,5 +30,10 @@ public class SignupController {
         signupRepository.save(new Signup(name, address));
         return "done";
     }
-
+    
+    @RequestMapping(value = "/registered", method = RequestMethod.GET)
+    public String getRegistered(Model model) {
+        model.addAttribute("registered", signupRepository.findAll());
+        return "registered";
+    }
 }
