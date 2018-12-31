@@ -17,7 +17,7 @@ These flaws have been implemented to the software:
 Steps to reproduce:
 1. Start the cybersecuritybase-project application in Netbeans.
 2. Open OWASP ZAP or similar program. Version 2.7.0 was used.
-3. Set to "URL to attack" "field http://localhost:8080"
+3. Set "URL to attack" to field http://localhost:8080
 4. After attacks have started bombarding the site, you can stop the attack.
 5. Right click from the left panel: Sites -> http://localhost:8080 -> POST:login(_csrf,password...
 	-> Attack -> Fuzz
