@@ -38,6 +38,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         
         http.authorizeRequests()
                 //.anyRequest().permitAll();
+                .antMatchers("/users").hasAuthority("ADMIN")
                 // A5:2017-Broken Access Control
                 // A3:2017-Sensitive Data Exposure
                 .antMatchers("/registered").permitAll()

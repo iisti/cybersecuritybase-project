@@ -30,22 +30,24 @@ public class Siteuser extends AbstractPersistable<Long> {
     private static int userID = 0;
     @Column(unique = false)
     private int loginAttempts;
+    private boolean admin;
 
 
     //int reposize = (int) siteuserRepository.count();
     
     public Siteuser() {
-        this.username = "username" + this.userID++;
+        this.username = "username" + Siteuser.userID++;
         // president
         this.password = "$2a$10$nKOFU.4/iK9CqDIlBkmMm.WZxy2XKdUSlImsG8iKsAP57GMcXwLTS";
         this.loginAttempts = 0;
     }
     
-    public Siteuser(String username, String password) {
+    public Siteuser(String username, String password, boolean admin) {
         this.username = username;
         this.password = password;
         this.loginAttempts = 0;
-        this.userID++;
+        Siteuser.userID++;
+        this.admin = admin;
     }
 
     //@OneToMany(mappedBy = "user")
@@ -88,4 +90,17 @@ public class Siteuser extends AbstractPersistable<Long> {
         this.loginAttempts++;
     }
     
+    public boolean isLocked() {
+        if (this.loginAttempts > 1) {
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean isAdmin() {
+        if (this.admin) {
+            return true;
+        }
+        return false;
+    }
 }

@@ -30,9 +30,12 @@ public class CustomUserDetailsService implements UserDetailsService {
         // added, create account mike with password "president"
         this.accountDetails.put("mike", "$2a$10$nKOFU.4/iK9CqDIlBkmMm.WZxy2XKdUSlImsG8iKsAP57GMcXwLTS");
         
-        // Add admin user with password "1234"
-        Siteuser user = new Siteuser("admin", passwordEncoder.encode("1234"));
+        // Add username admin with password "1234" and with admin role true
+        Siteuser user = new Siteuser("admin", passwordEncoder.encode("1234"), true);
         siteuserRepository.save(user);
+        
+        Siteuser user2 = new Siteuser("tom", passwordEncoder.encode("qwer"), false);
+        siteuserRepository.save(user2);
     }
 
     @Override
@@ -57,6 +60,29 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("No such user: " + username);
         }
 
+        // If account is locked, send info that account is locked
+        // https://docs.spring.io/spring-security/site/docs/4.2.8.RELEASE/apidocs/org/springframework/security/core/userdetails/UserDetails.html
+        if (siteuser.isLocked()) {
+            return new org.springframework.security.core.userdetails.User(
+                siteuser.getUsername(),
+                siteuser.getPassword(),
+                true,
+                true,
+                true,
+                false, // Account is locked
+                Arrays.asList(new SimpleGrantedAuthority("USER")));
+        }
+        if (siteuser.isAdmin()) {
+            return new org.springframework.security.core.userdetails.User(
+                siteuser.getUsername(),
+                siteuser.getPassword(),
+                true,
+                true,
+                true,
+                true,
+                Arrays.asList(new SimpleGrantedAuthority("ADMIN")));
+        }        
+        // Username is not locked
         return new org.springframework.security.core.userdetails.User(
                 siteuser.getUsername(),
                 siteuser.getPassword(),

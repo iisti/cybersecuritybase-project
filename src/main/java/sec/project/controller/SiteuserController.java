@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sec.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +11,7 @@ import sec.project.repository.SiteuserRepository;
 
 /**
  *
- * @author Admin
+ * @author iisti
  */
 @Controller
 public class SiteuserController {
@@ -30,8 +25,8 @@ public class SiteuserController {
     }
 
     @RequestMapping(value = "/create-user", method = RequestMethod.POST)
-    public String submitForm(@RequestParam String username, @RequestParam String password) {
-        siteuserRepository.save(new Siteuser(username, password));
+    public String submitForm(@RequestParam String username, @RequestParam String password, @RequestParam boolean admin) {
+        siteuserRepository.save(new Siteuser(username, password, admin));
         return "users";
     }
     

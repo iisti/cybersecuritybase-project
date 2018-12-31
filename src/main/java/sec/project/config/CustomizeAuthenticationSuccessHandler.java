@@ -50,7 +50,7 @@ public class CustomizeAuthenticationSuccessHandler implements AuthenticationSucc
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.sendRedirect("/locked");
         }
-        
+        response.sendRedirect("/form");
         
         
         
