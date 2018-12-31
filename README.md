@@ -14,6 +14,7 @@ These flaws have been implemented to the software:
 ## Flaw A2:2017-Broken Authentication
 
 **Issue:** Application permits brute force or other automated attacks when trying to login.
+
 Steps to reproduce:
 1. Start the cybersecuritybase-project application in Netbeans.
 2. Open OWASP ZAP or similar program. Version 2.7.0 was used.
@@ -47,6 +48,7 @@ A feature to unlock user has not been implemented, so the at the moment applicat
 
 ### Second issue with broken authentication
 Issue: Application permits default, weak, or well-known passwords, such as "Password1" or "admin/admin“.
+
 Steps to reproduce:
 1. Go to http://localhost:8080 with browser and login with admin account: admin/1234
 2. Select "Create User" from Site Menu
@@ -114,6 +116,7 @@ Now the form should not accept password which is not strong enough. The definiti
 ## Flaws A3:2017-Sensitive Data Exposure & A5:2017-Broken Access Control
 
 Issue: Sensitive data of name and address are freely available to anyone browsing to that address.
+
 Steps to reproduce:
 1. Login with browser using admin credentials (admin/1234) to http://localhost:8080/
 2. Click Signup from Site Menu
@@ -146,6 +149,7 @@ Now only a user which has authority/role of ADMIN can access the /registered pag
 ## Flaws A6:2017-Security Misconfiguration and A7:2017-Cross-Site Scripting (XSS)
 
 Issue: It is possible to get sessionID and inject JavaScript
+
 Steps to reproduce:
 1. Login with browser using admin credentials (admin/1234) to http://localhost:8080/
 2. Click Signup from Site Menu
@@ -172,6 +176,7 @@ cntxt.setUseHttpOnly(false);
 By enabling ```UseHttpOnly``` cookies, ```<script>alert(document.cookie);</script>``` does not alert sessionID anymore, but running script is still possible, so we need to do the following.
 
 Disable unescaped user input by:
+
 Make changes in file:
 * Path in NetBeans:
 cybersecurity-base-project -> Other Sources -> src/main/resources -> templates -> registered.html
@@ -187,6 +192,7 @@ Replace 'utext' with 'text' on line 15:
 ## Flaw A10:2017-Insufficient Logging & Monitoring
 
 Issue: Failed login attempts are not logged. Without logging the attempts it is hard to trace if some accounts are tried to be brute forced.
+
 Steps to reproduce issue:
 1. Login with browser using any credentials to http://localhost:8080/
 2. Check Output of logs. The last line should be ```Using ASTQueryTranslatorFactory```, and there is no good information about failed login attempt.
