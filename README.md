@@ -186,6 +186,8 @@ Replace 'utext' with 'text' on line 15:
 <li th:each="person : ${registered}" th:utext="${person.name} + ' ' + ${person.address}">Participant</li>
 ```
 
+Now the name and the script is shown as normal text: `name <script>alert(document.cookie);</script>`
+
 ---
 ## Flaw A10:2017-Insufficient Logging & Monitoring
 
