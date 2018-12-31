@@ -38,11 +38,14 @@ cybersecurity-base-project -> Source Packages -> sec.project.domain -> Siteuser.
 cybersecuritybase-project\src\main\java\sec\project\domain\Siteuser.java
 
 Uncomment line 64  in ```addLoginAttempts()``` method:
- ```this.loginAttempts++;```
+ ```java
+ this.loginAttempts++;
+ ```
 
 A feature to unlock user has not been implemented, so the at the moment application needs to be restarted to get account unlocked.
 
-**Second issue with broken authentication:** Application permits default, weak, or well-known passwords, such as "Password1" or "admin/admin“.
+#### Second issue with broken authentication
+Issue: Application permits default, weak, or well-known passwords, such as "Password1" or "admin/admin“.
 Steps to reproduce:
 1. Go to http://localhost:8080 with browser and login with admin account: admin/1234
 2. Select "Create User" from Site Menu
