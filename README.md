@@ -108,7 +108,7 @@ Uncomment the second form and message div:
 
 **The whole application might need restart in Netbeans, so that the changes start workgin!**
 
-**Try with ctrl+F5 to refresh the browser if new information "Password must contain..." does not show up**
+**Try with ctrl+F5 to refresh the browser if new information "Password must contain..." does not show up.**
 
 Now the form should not accept password which is not strong enough. The definition of strong password is given to user on the page.
 
@@ -167,8 +167,9 @@ cybersecurity-base-project -> Source Packages -> sec.project -> CyberSecurityBas
 * Or file path:
 cybersecuritybase-project\src\main\java\sec\project\CyberSecurityBaseProjectApplication.java
 
-Comment line 24 out. This enables UseHttpOnly cookies.
-line 24:
+Enable HttpOnly cookies by commenting line 14 away.
+
+Line 24:
 ```java
 cntxt.setUseHttpOnly(false);
 ```
