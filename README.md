@@ -140,6 +140,8 @@ Uncomment line 32:
 .antMatchers("/registered").hasAuthority("ADMIN")
 ```
 
+Now only a user which has authority/role of ADMIN can access the /registered page.
+
 ---
 ## Flaws A6:2017-Security Misconfiguration and A7:2017-Cross-Site Scripting (XSS)
 
