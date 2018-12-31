@@ -169,11 +169,11 @@ Steps to reproduce issue:
 2. Check Output of logs. The last line should be ```Using ASTQueryTranslatorFactory```, and there is no good information about failed login attempt.
 
 ### FIX:
-In file:
-Path in NetBeans:
-* cybersecuritybase-project -> Source Packages -> sec.project.config -> AuthenticationEventListener.java
-Or file path:
-* cybersecuritybase-project\src\main\java\sec\project\config\AuthenticationEventListener.java
+Make changes in file:
+* Path in NetBeans:
+cybersecuritybase-project -> Source Packages -> sec.project.config -> AuthenticationEventListener.java
+* Or file path:
+cybersecuritybase-project\src\main\java\sec\project\config\AuthenticationEventListener.java
 
 Uncomment line 35:
 ```java
