@@ -10,6 +10,7 @@ These flaws have been implemented to the software:
 * A7:2017-Cross-Site Scripting (XSS)
 * A10:2017-Insufficient Logging & Monitoring
 
+---
 ## Flaw A2:2017-Broken Authentication
 
 **Issue:** Application permits brute force or other automated attacks when trying to login.
@@ -37,7 +38,7 @@ cybersecurity-base-project -> Source Packages -> sec.project.domain -> Siteuser.
 * Or file path:
 cybersecuritybase-project\src\main\java\sec\project\domain\Siteuser.java
 
-Uncomment line 64  in ```addLoginAttempts()``` method:
+Uncomment line 64  in `addLoginAttempts()` method:
  ```java
  this.loginAttempts++;
  ```
@@ -105,8 +106,7 @@ Uncomment the second form:
 
 Now the form should not accept password which is not strong enough. The definition of strong password is given to user on the page.
 
-
-
+---
 ## Flaws A3:2017-Sensitive Data Exposure & A5:2017-Broken Access Control
 
 Issue: Sensitive data of name and address are freely available to anyone browsing to that address.
@@ -136,8 +136,7 @@ Uncomment line 32:
 .antMatchers("/registered").hasAuthority("ADMIN")
 ```
 
-
-
+---
 ## Flaws A6:2017-Security Misconfiguration and A7:2017-Cross-Site Scripting (XSS)
 
 Issue: It is possible to get sessionID and inject JavaScript
@@ -178,8 +177,7 @@ Replace 'utext' with 'text' on line 15:
 <li th:each="person : ${registered}" th:utext="${person.name} + ' ' + ${person.address}">Participant</li>
 ```
 
-
-
+---
 ## Flaw A10:2017-Insufficient Logging & Monitoring
 
 Issue: Failed login attempts are not logged. Without logging the attempts it is hard to trace if some accounts are tried to be brute forced.
