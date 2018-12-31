@@ -44,7 +44,7 @@ Uncomment line 64  in ```addLoginAttempts()``` method:
 
 A feature to unlock user has not been implemented, so the at the moment application needs to be restarted to get account unlocked.
 
-#### Second issue with broken authentication
+### Second issue with broken authentication
 Issue: Application permits default, weak, or well-known passwords, such as "Password1" or "admin/admin“.
 Steps to reproduce:
 1. Go to http://localhost:8080 with browser and login with admin account: admin/1234
@@ -106,6 +106,7 @@ Uncomment the second form:
 Now the form should not accept password which is not strong enough. The definition of strong password is given to user on the page.
 
 
+
 ## Flaws A3:2017-Sensitive Data Exposure & A5:2017-Broken Access Control
 
 Issue: Sensitive data of name and address are freely available to anyone browsing to that address.
@@ -134,6 +135,8 @@ Uncomment line 32:
 ```java
 .antMatchers("/registered").hasAuthority("ADMIN")
 ```
+
+
 
 ## Flaws A6:2017-Security Misconfiguration and A7:2017-Cross-Site Scripting (XSS)
 
@@ -174,6 +177,7 @@ Replace 'utext' with 'text' on line 15:
 ```html
 <li th:each="person : ${registered}" th:utext="${person.name} + ' ' + ${person.address}">Participant</li>
 ```
+
 
 
 ## Flaw A10:2017-Insufficient Logging & Monitoring
