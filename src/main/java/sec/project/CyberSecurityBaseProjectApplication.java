@@ -21,11 +21,7 @@ public class CyberSecurityBaseProjectApplication implements EmbeddedServletConta
             @Override
             public void customize(Context cntxt) {
                 // A6:2017-Security Misconfiguration
-                //cntxt.setUseHttpOnly(false);
-                
-                // Some stupid testing
-                // Set the session ID to be shorter so it can be brute forced
-                //cntxt.getManager().getSessionIdGenerator().setSessionIdLength(1);
+                cntxt.setUseHttpOnly(false);
             }
             
         });

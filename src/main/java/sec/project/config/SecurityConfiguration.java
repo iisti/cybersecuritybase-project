@@ -24,9 +24,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // A7:2017-Cross-Site Scripting (XSS)
-        // http.headers().frameOptions().sameOrigin();
-        
         http.authorizeRequests()           
                 .antMatchers("/users").hasAnyAuthority("ADMIN")
                 // A5:2017-Broken Access Control

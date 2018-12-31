@@ -37,21 +37,11 @@ public class CustomizeAuthenticationSuccessHandler implements AuthenticationSucc
         
         String username = authentication.getName();
         Siteuser user = siteuserRepository.findByUsername(username);
-        /*if (user.isLocked()) {
-            //response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.sendRedirect("/locked");
-        }*/
         response.sendRedirect("/form");
         
         // Set failed login attempts counter to zero
         user.zeroLoginAttempts();
         
         logger.info("AuthenticationSuccess: " + username + ", failed login attempts " + user.getLoginAttempts());
-        /*
-        for (GrantedAuthority auth : authentication.getAuthorities()) {
-            if ("ROLE_ADMIN".equals(auth.getAuthority())){
-            	admin = true;
-            }
-        }*/
     }  
 }

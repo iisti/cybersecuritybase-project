@@ -1,18 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sec.project.domain;
 
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.domain.AbstractPersistable;
-import sec.project.repository.SiteuserRepository;
 
 /**
  *
@@ -21,9 +11,6 @@ import sec.project.repository.SiteuserRepository;
 @Entity
 public class Siteuser extends AbstractPersistable<Long> {
 
-    //@Autowired PasswordEncoder passwordEncoder;
-    //@Autowired private SiteuserRepository siteuserRepository;
-    
     @Column(unique = true)
     private String username;
     private String password;
@@ -32,9 +19,6 @@ public class Siteuser extends AbstractPersistable<Long> {
     private int loginAttempts;
     private boolean isAdmin;
 
-
-    //int reposize = (int) siteuserRepository.count();
-    
     public Siteuser() {
         this.username = "username" + Siteuser.userID++;
         // default password is president
@@ -47,23 +31,9 @@ public class Siteuser extends AbstractPersistable<Long> {
         this.username = username;
         this.password = password;
         this.loginAttempts = 0;
-        Siteuser.userID++;
-        
-        
+        Siteuser.userID++; 
         this.isAdmin = admin;
     }
-
-    //@OneToMany(mappedBy = "user")
-    /*
-    private List<FileObject> fileObjects;
-
-    public List<FileObject> getFileObjects() {
-        return fileObjects;
-    }
-
-    public void setFileObjects(List<FileObject> fileObjects) {
-        this.fileObjects = fileObjects;
-    }*/
 
     public String getUsername() {
         return username;

@@ -23,8 +23,6 @@ public class SiteuserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
-    
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String getUsers(Model model) {
         model.addAttribute("users", siteuserRepository.findAll());

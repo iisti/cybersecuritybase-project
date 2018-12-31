@@ -101,7 +101,7 @@
         </form>
 
         <!-- Uncomment this form to enforce password checking -->
-        <!-- 
+        <!--
         <div class="container">
             <form action="#" th:action="@{/create-user}" method="POST">
                 <p>
@@ -111,6 +111,9 @@
                 <p>
                     <label for="psw">Password</label>
                     <input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required="true"/>
+                </p>
+                <p>
+                    <label for="admin">Admin</label>: <input type="checkbox" name="admin" id="admin"/>
                 </p>
                 <p>
                     <input type="submit" value="Submit"/>
