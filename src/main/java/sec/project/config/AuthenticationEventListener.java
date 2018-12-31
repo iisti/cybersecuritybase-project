@@ -31,7 +31,9 @@ public class AuthenticationEventListener {
         if (user != null) {
             user.addLoginAttempts();
             siteuserRepository.save(user);
-            logger.info("AuthenticationFailed, username: " + username + ", failed login attempts: " + user.getLoginAttempts());
+            // A10:2017-Insufficient Logging & Monitoring
+            // Uncomment this line for logging failed loging attempts
+            //logger.info("AuthenticationFailed, username: " + username + ", failed login attempts: " + user.getLoginAttempts());
         }
         
     }

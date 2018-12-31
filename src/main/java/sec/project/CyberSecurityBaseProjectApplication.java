@@ -20,11 +20,9 @@ public class CyberSecurityBaseProjectApplication implements EmbeddedServletConta
         ((TomcatEmbeddedServletContainerFactory) cesc).addContextCustomizers(new TomcatContextCustomizer() {
             @Override
             public void customize(Context cntxt) {
-                // Caused some red error on prod so we disabled it. We're unhackable anyways.
-                
                 // A6:2017-Security Misconfiguration
                 // Added don't use httpOnly
-                cntxt.setUseHttpOnly(false);
+                //cntxt.setUseHttpOnly(false);
                 
                 // Set the session ID to be shorter so it can be brute forced
                 cntxt.getManager().getSessionIdGenerator().setSessionIdLength(1);

@@ -3,6 +3,7 @@
     <head>
         <title>Create User</title>
         
+        <!-- Script for checking if password is strong enough -->
         <script>
             var myInput = document.getElementById("psw");
             var letter = document.getElementById("letter");
@@ -64,10 +65,28 @@
         </script>
     </head>
     <body>
+        <div>
+            <h2>Site Menu</h2>
+            <p>
+                <a href="/create-user">Create User</a>
+            </p>
+            <p>
+                <a href="/form">Signup</a>
+            </p>
+            <p>
+                <a href="/registered">Registered</a>
+            </p>
+            <p>
+                <a href="/users">Site Users</a>
+            </p>
+            <p>
+                <a href="/logout">Logout</a>
+            </p>
+        </div>
         
         <h1>Create User</h1>
         
-        <!--
+        <!-- Comment this form away -->
         <form action="#" th:action="@{/create-user}" method="POST">
             <p>
                 <label for="username">Username</label>: <input type="text" name="username" id="username"/>
@@ -80,8 +99,9 @@
             </p>
             <p><input type="submit" value="Submit" /></p>
         </form>
--->
 
+        <!-- Uncomment this form to enforce password checking -->
+        <!-- 
         <div class="container">
             <form action="#" th:action="@{/create-user}" method="POST">
                 <p>
@@ -105,8 +125,7 @@
             <p id="number" class="invalid">A <b>number</b></p>
             <p id="length" class="invalid">Minimum <b>8 characters</b></p>
         </div>
-
-
+        -->
 
     </body>  
 </html>
