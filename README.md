@@ -1,7 +1,6 @@
 # Cyber Security Base - Course Project I
 
-Task:
-* In the first course project, your task is to create a web application that has at least five different flaws from the OWASP top ten list (https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf). Starter code for the project is provided on Github at https://github.com/cybersecuritybase/cybersecuritybase-project.
+**Task:** In the first course project, your task is to create a web application that has at least five different flaws from the OWASP top ten list (https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf). Starter code for the project is provided on Github at https://github.com/cybersecuritybase/cybersecuritybase-project.
 
 These flaws have been implemented to the software:
 * A2:2017-Broken Authentication
@@ -28,10 +27,11 @@ and then select ZAP of password and click Add, Type is File
 9. Start Fuzzer
 10. Check from column "Size Resp.Body" which password has unique size. qwertyuiop password should be the only one with size 535 bytes, which means in this case that the password has been found.
 
-**FIX**
+### FIX:
 Enable feature that failed login attempts are registered and if there are over 3 attempts account gets locked.
 
 Make changes in file:
+
 * Path in NetBeans:
 cybersecurity-base-project -> Source Packages -> sec.project.domain -> Siteuser.java
 * Or file path:
@@ -49,7 +49,7 @@ Steps to reproduce:
 3. Try to create user with credentials asdf/asdf
 4. User is created.
 
-**FIX**
+### FIX:
 Make changes in file:
 * Path in NetBeans:
 cybersecuritybase-project -> Other Sources -> src/main/resources -> templates -> create-user.html
@@ -59,7 +59,7 @@ cybersecuritybase-project\src\main\resources\templates\create-user.html
 There is JavaScript that enforces to use strong passwords when creating a new user, but forms need to be modified.
 
 Delete or comment this form away (lines from 90 to 101):
-```
+```html
         <form action="#" th:action="@{/create-user}" method="POST">
             <p>
                 <label for="username">Username</label>: <input type="text" name="username" id="username"/>
@@ -74,7 +74,7 @@ Delete or comment this form away (lines from 90 to 101):
         </form>
 ```
 Uncomment the second form:
-```
+```html
 <div class="container">
             <form action="#" th:action="@{/create-user}" method="POST">
                 <p>
@@ -114,7 +114,7 @@ Steps to reproduce:
 5. Go to http://localhost:8080/registered
 6. Anybody is able to see information about signed up users.
 
-**FIX**
+### FIX:
 This application has user authorities/roles of USER and ADMIN. Only administrators/ADMIN should have access to the list of registered users.
 
 Make changes in file:
@@ -138,7 +138,7 @@ Steps to reproduce:
 4. Go to http://localhost:8080/registered
 5. There should be a JavaScript alert which shows sessionID
 
-**FIX**
+### FIX:
 Make changes in file:
 * Path in NetBeans:
 cybersecurity-base-project -> Source Packages -> sec.project -> CyberSecurityBaseProjectApplication.java
@@ -168,16 +168,21 @@ Steps to reproduce issue:
 1. Login with browser using any credentials to http://localhost:8080/
 2. Check Output of logs. The last line should be ```Using ASTQueryTranslatorFactory```, and there is no good information about failed login attempt.
 
-**FIX**
+### FIX:
 In file:
 Path in NetBeans:
 * cybersecuritybase-project -> Source Packages -> sec.project.config -> AuthenticationEventListener.java
 Or file path:
 * cybersecuritybase-project\src\main\java\sec\project\config\AuthenticationEventListener.java
 
-Uncomment lines 35 and 39:
-```logger.info("AuthenticationFailed, username: " + username + ", failed login attempts: " + user.getLoginAttempts());```
+Uncomment line 35:
+```java
+logger.info("AuthenticationFailed, username: " + username + ", failed login attempts: " + user.getLoginAttempts());
+```
 
-```logger.info("AuthenticationFailed, username does not exist: " + username);```
+Uncomment line39:
+```java
+logger.info("AuthenticationFailed, username does not exist: " + username);
+```
 
 Now there is more information if somebody is trying to brute force accounts. Of course more information could be saved, for example IP address and block the address if there are too many attempts.
