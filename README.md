@@ -43,7 +43,7 @@ Uncomment line 64  in `addLoginAttempts()` method:
  this.loginAttempts++;
  ```
 
-A feature to unlock user has not been implemented, so the at the moment application needs to be restarted to get account unlocked.
+A feature to unlock user has not been implemented, so the at the moment application needs to be restarted to get account unlocked. You can try fuzzing again. Now the "Size Resp. Body" should be 165 bytes and not differiante except the first one is 0 bytes.
 
 ### Second issue with broken authentication
 Issue: Application permits default, weak, or well-known passwords, such as "Password1" or "admin/admin“.
