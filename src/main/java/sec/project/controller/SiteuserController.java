@@ -19,19 +19,10 @@ public class SiteuserController {
     @Autowired
     private SiteuserRepository siteuserRepository;
 
-    @RequestMapping(value = "/create-user", method = RequestMethod.GET)
-    public String loadForm() {
-        return "create-user";
-    }
 
-    @RequestMapping(value = "/create-user", method = RequestMethod.POST)
-    public String submitForm(@RequestParam String username, @RequestParam String password, @RequestParam boolean admin) {
-        siteuserRepository.save(new Siteuser(username, password, admin));
-        return "users";
-    }
     
     @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public String getRegistered(Model model) {
+    public String getUsers(Model model) {
         model.addAttribute("users", siteuserRepository.findAll());
         return "users";
     }
@@ -39,5 +30,17 @@ public class SiteuserController {
     @RequestMapping(value = "/locked", method = RequestMethod.GET)
     public String locked() {
         return "locked";
+    }
+        
+    @RequestMapping(value = "/create-user", method = RequestMethod.GET)
+    public String loadForm() {
+        return "create-user";
+    }
+
+    
+    @RequestMapping(value = "/create-user", method = RequestMethod.POST)
+    public String submitForm(@RequestParam String username, @RequestParam String password, @RequestParam(value="admin", required = false )boolean admin) {
+        siteuserRepository.save(new Siteuser(username, password, admin));
+        return "users";
     }
 }

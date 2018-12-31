@@ -29,21 +29,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // OWASP Top 10 - 2013
         // A8 – Cross-Site Request Forgery (CSRF)
         //http.csrf().disable();
-        
 
-        // 
         // A2:2017-Broken Authentication
         // A7:2017-Cross-Site Scripting (XSS)
-        http.headers().frameOptions().sameOrigin();
+        //http.headers().frameOptions().sameOrigin();
         
         http.authorizeRequests()
-                //.anyRequest().permitAll();
-                .antMatchers("/users").hasAuthority("ADMIN")
                 // A5:2017-Broken Access Control
+                .antMatchers("/users").hasAnyAuthority("ADMIN", "USER")
                 // A3:2017-Sensitive Data Exposure
                 .antMatchers("/registered").permitAll()
-                .anyRequest().authenticated(); //added
-        http.formLogin().successHandler(customizeAuthenticationSuccessHandler) //added
+                .anyRequest().authenticated();
+        http.formLogin().successHandler(customizeAuthenticationSuccessHandler)
                 .permitAll();
     }
 

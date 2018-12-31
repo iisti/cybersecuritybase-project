@@ -20,15 +20,18 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired SiteuserRepository siteuserRepository;
     @Autowired PasswordEncoder passwordEncoder;
     
-    private Map<String, String> accountDetails;
+    //private Map<String, String> accountDetails;
 
     @PostConstruct
     public void init() {
         // this data would typically be retrieved from a database
+        /*
         this.accountDetails = new TreeMap<>();
         this.accountDetails.put("ted", "$2a$06$rtacOjuBuSlhnqMO2GKxW.Bs8J6KI0kYjw/gtF0bfErYgFyNTZRDm");
         // added, create account mike with password "president"
         this.accountDetails.put("mike", "$2a$10$nKOFU.4/iK9CqDIlBkmMm.WZxy2XKdUSlImsG8iKsAP57GMcXwLTS");
+        */
+        
         
         // Add username admin with password "1234" and with admin role true
         Siteuser user = new Siteuser("admin", passwordEncoder.encode("1234"), true);
@@ -72,7 +75,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                 false, // Account is locked
                 Arrays.asList(new SimpleGrantedAuthority("USER")));
         }
-        if (siteuser.isAdmin()) {
+        if (siteuser.getIsAdmin()) {
             return new org.springframework.security.core.userdetails.User(
                 siteuser.getUsername(),
                 siteuser.getPassword(),

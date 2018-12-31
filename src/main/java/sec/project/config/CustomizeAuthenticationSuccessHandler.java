@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sec.project.config;
 
 /**
  *
- * @author Admin
+ * @author iisti
  */
 import java.io.IOException;
  
@@ -40,34 +35,23 @@ public class CustomizeAuthenticationSuccessHandler implements AuthenticationSucc
         //set our response to OK status
         response.setStatus(HttpServletResponse.SC_OK);
         
-        
-        //String username = (String) event.getAuthentication().getPrincipal();
         String username = authentication.getName();
-        //System.out.println(username);
         Siteuser user = siteuserRepository.findByUsername(username);
-        //System.out.println(siteuserRepository.findByUsername(username).getLoginAttempts());
-        if (user.getLoginAttempts() > 1) {
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        /*if (user.isLocked()) {
+            //response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.sendRedirect("/locked");
-        }
+        }*/
         response.sendRedirect("/form");
         
+        // Set failed login attempts counter to zero
+        user.zeroLoginAttempts();
         
-        
-        boolean admin = false;
-        
-        logger.info("AT onAuthenticationSuccess(...) function!");
+        logger.info("AuthenticationSuccess: " + username + ", failed login attempts " + user.getLoginAttempts());
         /*
         for (GrantedAuthority auth : authentication.getAuthorities()) {
             if ("ROLE_ADMIN".equals(auth.getAuthority())){
             	admin = true;
             }
-        }
-        
-        if(admin){
-        	response.sendRedirect("/admin");
-        }else{
-        	response.sendRedirect("/user");
         }*/
     }  
 }

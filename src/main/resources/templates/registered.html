@@ -9,8 +9,9 @@
         <div>
             <h2>Registered participants</h2>
             <ul>
-                <li>Name Address</li>
-                <li th:each="person : ${registered}" th:text="${person.name} + ' ' + ${person.address}">Participant</li>
+                <h3>Name Address</h3>
+                <!-- Replace 'utext' with 'text'-->
+                <li th:each="person : ${registered}" th:utext="${person.name} + ' ' + ${person.address}">Participant</li>
             </ul>
         </div>
     </body>
