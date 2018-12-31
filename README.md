@@ -54,13 +54,13 @@ Steps to reproduce:
 4. User is created.
 
 ### FIX:
+There is JavaScript that enforces to use strong passwords when creating a new user, but forms need to be modified.
+
 Make changes in file:
 * Path in NetBeans:
 cybersecuritybase-project -> Other Sources -> src/main/resources -> templates -> create-user.html
 * Or file path:
 cybersecuritybase-project\src\main\resources\templates\create-user.html
-
-There is JavaScript that enforces to use strong passwords when creating a new user, but forms need to be modified.
 
 Delete or comment this form away (lines from 90 to 101):
 ```html
