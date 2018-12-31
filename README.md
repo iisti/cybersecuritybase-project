@@ -15,7 +15,7 @@ These flaws have been implemented to the software:
 
 **Issue:** Application permits brute force or other automated attacks when trying to login.
 Steps to reproduce:
-1. Start the cybersecuritybase-project application on Netbeans
+1. Start the cybersecuritybase-project application in Netbeans.
 2. Open OWASP ZAP or similar program. Version 2.7.0 was used.
 3. Set to "URL to attack" "field http://localhost:8080"
 4. After attacks have started bombarding the site, you can stop the attack.
