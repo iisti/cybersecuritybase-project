@@ -195,7 +195,7 @@ Issue: Failed login attempts are not logged. Without logging the attempts it is 
 
 Steps to reproduce issue:
 1. Login with browser using any credentials to http://localhost:8080/
-2. Check Output of logs. The last line should be ```Using ASTQueryTranslatorFactory```, and there is no good information about failed login attempt.
+2. Check Output of logs in NetBeans. The last line should be ```Using ASTQueryTranslatorFactory``` or `AuthenticationSuccess: ...` with last successful authentication, but there is no good information about failed login attempt.
 
 ### FIX:
 Make changes in file:
