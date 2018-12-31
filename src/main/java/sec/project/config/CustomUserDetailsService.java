@@ -75,6 +75,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                 false, // Account is locked
                 Arrays.asList(new SimpleGrantedAuthority("USER")));
         }
+        // Username is admin
         if (siteuser.getIsAdmin()) {
             return new org.springframework.security.core.userdetails.User(
                 siteuser.getUsername(),
@@ -85,7 +86,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                 true,
                 Arrays.asList(new SimpleGrantedAuthority("ADMIN")));
         }        
-        // Username is not locked
+        // Username is not locked and not admin
         return new org.springframework.security.core.userdetails.User(
                 siteuser.getUsername(),
                 siteuser.getPassword(),

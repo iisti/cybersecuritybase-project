@@ -7,8 +7,9 @@
     <body>
         <div>
             <h2>Users</h2>
+            Listing all site users and if they are admins.
             <ul>
-                <h3>Username Admin?</h3>
+                Username Admin?
                 <li th:each="user : ${users}" th:text="${user.username} + ' ' + ${user.isAdmin}">User</li>
             </ul>
         </div>

@@ -37,7 +37,7 @@ public class Siteuser extends AbstractPersistable<Long> {
     
     public Siteuser() {
         this.username = "username" + Siteuser.userID++;
-        // president
+        // default password is president
         this.password = "$2a$10$nKOFU.4/iK9CqDIlBkmMm.WZxy2XKdUSlImsG8iKsAP57GMcXwLTS";
         this.loginAttempts = 0;
         this.isAdmin = false;
@@ -48,6 +48,8 @@ public class Siteuser extends AbstractPersistable<Long> {
         this.password = password;
         this.loginAttempts = 0;
         Siteuser.userID++;
+        
+        
         this.isAdmin = admin;
     }
 
@@ -101,13 +103,7 @@ public class Siteuser extends AbstractPersistable<Long> {
         this.isAdmin = admin;
     }
     
-    
     public boolean getIsAdmin() {
         return this.isAdmin;
     }
-    
-    /*
-    public boolean isAdmin() {
-        return this.isAdmin;
-    }*/
 }
