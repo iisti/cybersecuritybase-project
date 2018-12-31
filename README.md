@@ -169,11 +169,11 @@ cybersecuritybase-project\src\main\java\sec\project\CyberSecurityBaseProjectAppl
 
 Enable HttpOnly cookies by commenting line 14 away and restart browser, so that the HttpOnly is set on.
 
-Line 24: `cntxt.setUseHttpOnly(false);`
+**Line 24: `cntxt.setUseHttpOnly(false);`**
 
 By enabling ```UseHttpOnly``` cookies, ```<script>alert(document.cookie);</script>``` does not alert sessionID anymore, but running script is still possible, so we need to do the following.
 
-Disable unescaped user input by:
+**Disable unescaped user input by:**
 
 Make changes in file:
 * Path in NetBeans:
