@@ -77,7 +77,7 @@ Delete or comment this form away (lines from 90 to 101):
             <p><input type="submit" value="Submit" /></p>
         </form>
 ```
-Uncomment the second form:
+Uncomment the second form and message div:
 ```html
 <div class="container">
             <form action="#" th:action="@{/create-user}" method="POST">
@@ -95,13 +95,13 @@ Uncomment the second form:
             </form>
         </div>
 
-        <div id="message">
-            <h3>Password must contain the following:</h3>
-            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-            <p id="number" class="invalid">A <b>number</b></p>
-            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-        </div>
+<div id="message">
+    <h3>Password must contain the following:</h3>
+    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+    <p id="number" class="invalid">A <b>number</b></p>
+    <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+</div>
 ```
 
 Now the form should not accept password which is not strong enough. The definition of strong password is given to user on the page.
