@@ -21,9 +21,9 @@ Steps to reproduce:
 4. After attacks have started bombarding the site, you can stop the attack.
 5. Right click from the left panel: Sites -> http://localhost:8080 -> POST:login(_csrf,password...
 6. and select: Attack -> Fuzz
-7. Set username mike by highlighting ZAP and clicking Add, Type is Strings
+7. Set username to **mike** by highlighting **ZAP** and clicking **Add**, Type is Strings
 8. Set password list by downloading https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/darkweb2017-top1000.txt
-and then select ZAP of password and click Add, Type is File
+and then select **ZAP** of password and click **Add**, Type is File
 9. Select from Options tab "Follow Redirects" checkbox
 10. Start Fuzzer
 11. Check from column "Size Resp.Body" which password has unique size. qwertyuiop password should be the only one with size 535 bytes, which means in this case that the password has been found.
