@@ -27,10 +27,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // A7:2017-Cross-Site Scripting (XSS)
         // http.headers().frameOptions().sameOrigin();
         
-        http.authorizeRequests()
+        http.authorizeRequests()           
+                .antMatchers("/users").hasAnyAuthority("ADMIN")
                 // A5:2017-Broken Access Control
-                .antMatchers("/users").hasAnyAuthority("ADMIN", "USER") // Comment this
-                //.antMatchers("/users").hasAnyAuthority("ADMIN") // Uncomment this
                 // A3:2017-Sensitive Data Exposure
                 .antMatchers("/registered").permitAll() // Comment this
                 //.antMatchers("/registered").hasAuthority("ADMIN") // Uncomment this

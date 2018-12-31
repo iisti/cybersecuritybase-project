@@ -39,6 +39,9 @@ public class CustomUserDetailsService implements UserDetailsService {
         
         Siteuser user2 = new Siteuser("tom", passwordEncoder.encode("qwer"), false);
         siteuserRepository.save(user2);
+        
+        Siteuser user3 = new Siteuser("mike", passwordEncoder.encode("qwertyuiop"), false);
+        siteuserRepository.save(user3);
     }
 
     @Override

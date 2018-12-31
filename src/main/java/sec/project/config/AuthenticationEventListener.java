@@ -35,15 +35,10 @@ public class AuthenticationEventListener {
             // Uncomment this line for logging failed loging attempts
             //logger.info("AuthenticationFailed, username: " + username + ", failed login attempts: " + user.getLoginAttempts());
         }
+        else if (user == null) {
+            // Uncomment this line for logging failed loging attempts
+            //logger.info("AuthenticationFailed, username does not exist: " + username);
+        }
         
     }
-    /*
-    public void authenticationSuccess(AuthenticationSuccessEvent event) {
-        String username = (String) event.getAuthentication().getPrincipal();
-        Siteuser user = siteuserRepository.findByUsername(username);
-        //System.out.println(siteuserRepository.findByUsername(username).getLoginAttempts());
-        if (user.getLoginAttempts() > 1) {
-            System.out.println("failed");
-        }
-    }*/
 }
