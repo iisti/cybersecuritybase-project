@@ -12,9 +12,7 @@ import javax.persistence.OneToMany;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.domain.AbstractPersistable;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import sec.project.repository.SiteuserRepository;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  *
@@ -29,21 +27,25 @@ public class Siteuser extends AbstractPersistable<Long> {
     @Column(unique = true)
     private String username;
     private String password;
+    private static int userID = 0;
+    @Column(unique = false)
     private int loginAttempts;
 
+
+    //int reposize = (int) siteuserRepository.count();
     
     public Siteuser() {
-        this.username = "username";//siteuserRepository.count() + 1;
+        this.username = "username" + this.userID++;
         // president
         this.password = "$2a$10$nKOFU.4/iK9CqDIlBkmMm.WZxy2XKdUSlImsG8iKsAP57GMcXwLTS";
         this.loginAttempts = 0;
     }
     
     public Siteuser(String username, String password) {
-        //this();
         this.username = username;
         this.password = password;
         this.loginAttempts = 0;
+        this.userID++;
     }
 
     //@OneToMany(mappedBy = "user")

@@ -17,6 +17,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsService userDetailsService;
+    
+    @Autowired
+    private CustomizeAuthenticationSuccessHandler customizeAuthenticationSuccessHandler;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -39,7 +42,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 // A3:2017-Sensitive Data Exposure
                 .antMatchers("/registered").permitAll()
                 .anyRequest().authenticated(); //added
-        http.formLogin() //added
+        http.formLogin().successHandler(customizeAuthenticationSuccessHandler) //added
                 .permitAll();
     }
 

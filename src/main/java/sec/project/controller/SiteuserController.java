@@ -40,4 +40,9 @@ public class SiteuserController {
         model.addAttribute("users", siteuserRepository.findAll());
         return "users";
     }
+    
+    @RequestMapping(value = "/locked", method = RequestMethod.GET)
+    public String locked() {
+        return "locked";
+    }
 }

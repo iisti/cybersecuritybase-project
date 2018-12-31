@@ -3,6 +3,7 @@ package sec.project.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.security.authentication.event.AuthenticationFailureBadCredentialsEvent;
+import org.springframework.security.authentication.event.AuthenticationSuccessEvent;
 import org.springframework.stereotype.Component;
 import sec.project.domain.Siteuser;
 import sec.project.repository.SiteuserRepository;
@@ -31,5 +32,13 @@ public class AuthenticationEventListener {
             System.out.println(siteuserRepository.findByUsername(username).getLoginAttempts());
         }
         
+    }
+    public void authenticationSuccess(AuthenticationSuccessEvent event) {
+        String username = (String) event.getAuthentication().getPrincipal();
+        Siteuser user = siteuserRepository.findByUsername(username);
+        System.out.println(siteuserRepository.findByUsername(username).getLoginAttempts());
+        if (user.getLoginAttempts() > 1) {
+            System.out.println("failed");
+        }
     }
 }
