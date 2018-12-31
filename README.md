@@ -124,9 +124,13 @@ cybersecurity-base-project -> Source Packages -> sec.project.config -> SecurityC
 cybersecuritybase-project\src\main\java\sec\project\config\SecurityConfiguration.java
 
 Comment line 31:
-```.antMatchers("/registered").permitAll()```
+```java
+.antMatchers("/registered").permitAll()
+```
 Uncomment line 32:
-```.antMatchers("/registered").hasAuthority("ADMIN")```
+```java
+.antMatchers("/registered").hasAuthority("ADMIN")
+```
 
 ## Flaws A6:2017-Security Misconfiguration and A7:2017-Cross-Site Scripting (XSS)
 
@@ -134,7 +138,10 @@ Issue: It is possible to get sessionID and inject JavaScript
 Steps to reproduce:
 1. Login with browser using admin credentials (admin/1234) to http://localhost:8080/
 2. Click Signup from Site Menu
-3. Add name and as address ```<script>alert(document.cookie);</script>```
+3. Add name and as address add:
+```javascript
+<script>alert(document.cookie);</script>
+```
 4. Go to http://localhost:8080/registered
 5. There should be a JavaScript alert which shows sessionID
 
@@ -146,7 +153,10 @@ cybersecurity-base-project -> Source Packages -> sec.project -> CyberSecurityBas
 cybersecuritybase-project\src\main\java\sec\project\CyberSecurityBaseProjectApplication.java
 
 Comment line 24 out. This enables UseHttpOnly cookies.
-line 24: ```cntxt.setUseHttpOnly(false);```
+line 24:
+```java
+cntxt.setUseHttpOnly(false);
+```
 
 By enabling ```UseHttpOnly``` cookies, ```<script>alert(document.cookie);</script>``` does not alert sessionID anymore, but running script is still possible, so we need to do the following.
 
@@ -158,7 +168,9 @@ cybersecurity-base-project -> Other Sources -> src/main/resources -> templates -
 cybersecuritybase-project\src\main\resources\templates\registered.html
 
 Replace 'utext' with 'text' on line 15:
-```<li th:each="person : ${registered}" th:utext="${person.name} + ' ' + ${person.address}">Participant</li>```
+```html
+<li th:each="person : ${registered}" th:utext="${person.name} + ' ' + ${person.address}">Participant</li>
+```
 
 
 ## Flaw A10:2017-Insufficient Logging & Monitoring
