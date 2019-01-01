@@ -60,8 +60,7 @@ public class Siteuser extends AbstractPersistable<Long> {
     }
     
     public void addLoginAttempts() {
-        // Uncomment this so that failed logins are counted
-        //this.loginAttempts++;
+
     }
     
     public boolean isLocked() {
