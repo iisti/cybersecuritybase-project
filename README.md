@@ -209,9 +209,9 @@ Uncomment line 35:
 logger.info("AuthenticationFailed, username: " + username + ", failed login attempts: " + user.getLoginAttempts());
 ```
 
-Uncomment line39:
+Uncomment line 39:
 ```java
 logger.info("AuthenticationFailed, username does not exist: " + username);
 ```
 
-Now there is more information if somebody is trying to brute force accounts. Of course more information could be saved, for example IP address and block the address if there are too many attempts.
+Now there is more information if somebody is trying to brute force accounts. Of course more information could be saved, for example IP address. IP address could be then blocked.
