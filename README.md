@@ -10,6 +10,12 @@ These flaws have been implemented to the software:
 * A7:2017-Cross-Site Scripting (XSS)
 * A10:2017-Insufficient Logging & Monitoring
 
+There are 3 built-in user accounts for testing purposes:
+* **Username/Password**
+* admin/1234
+* tom/qwer
+* mike/qwertyuiop
+
 ---
 ## Flaw A2:2017-Broken Authentication
 
