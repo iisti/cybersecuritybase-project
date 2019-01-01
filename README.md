@@ -49,6 +49,14 @@ Add code below to line 63 in `addLoginAttempts()` method:
  ```java
  this.loginAttempts++;
  ```
+**If the locking does not start to work, stop the application in NetBeans and use Clean and Build. For some reason NetBeans did not register the change and just restarting the application did not help.**
+
+In browser you can see message below after 4th failed login attempt.
+```
+Your login attempt was not successful, try again.
+
+Reason: User account is locked
+```
 
 A feature to unlock user has not been implemented, so the at the moment application needs to be restarted to get account unlocked. You can try fuzzing again. Now the "Size Resp. Body" should be 165 bytes and not differiante except the first one is 0 bytes.
 
