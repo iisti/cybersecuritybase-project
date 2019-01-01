@@ -11,10 +11,10 @@ These flaws have been implemented to the software:
 * A10:2017-Insufficient Logging & Monitoring
 
 There are 3 built-in user accounts for testing purposes:
-* **Username/Password**
-* admin/1234
-* tom/qwer
-* mike/qwertyuiop
+* **Username/Password/Role**
+* admin/1234/ADMIN
+* tom/qwer/USER
+* mike/qwertyuiop/USER
 
 ---
 ## Flaw A2:2017-Broken Authentication
