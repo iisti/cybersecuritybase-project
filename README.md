@@ -45,7 +45,7 @@ cybersecurity-base-project -> Source Packages -> sec.project.domain -> Siteuser.
 * Or file path:
 cybersecuritybase-project\src\main\java\sec\project\domain\Siteuser.java
 
-Uncomment line 64  in `addLoginAttempts()` method:
+Add code below to line 63 in `addLoginAttempts()` method:
  ```java
  this.loginAttempts++;
  ```
