@@ -81,36 +81,36 @@ cybersecuritybase-project\src\main\resources\templates\create-user.html
 
 Delete or comment this form away (lines from 90 to 101):
 ```html
-        <form action="#" th:action="@{/create-user}" method="POST">
-            <p>
-                <label for="username">Username</label>: <input type="text" name="username" id="username"/>
-            </p>
-            <p>
-                <label for="psw">Password</label>: <input type="password" name="psw" id="psw"/>
-            </p>
-            <p>
-                <label for="admin">Admin</label>: <input type="checkbox" name="admin" id="admin"/>
-            </p>
-            <p><input type="submit" value="Submit" /></p>
-        </form>
+<form action="#" th:action="@{/create-user}" method="POST">
+    <p>
+        <label for="username">Username</label>: <input type="text" name="username" id="username"/>
+    </p>
+    <p>
+        <label for="psw">Password</label>: <input type="password" name="psw" id="psw"/>
+    </p>
+    <p>
+        <label for="admin">Admin</label>: <input type="checkbox" name="admin" id="admin"/>
+    </p>
+    <p><input type="submit" value="Submit" /></p>
+</form>
 ```
 Uncomment the second form and message div:
 ```html
 <div class="container">
-            <form action="#" th:action="@{/create-user}" method="POST">
-                <p>
-                    <label for="username">Username</label>:
-                    <input type="text" id="username" name="username" required="true"/>
-                </p>
-                <p>
-                    <label for="psw">Password</label>
-                    <input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required="true"/>
-                </p>
-                <p>
-                    <input type="submit" value="Submit"/>
-                </p>
-            </form>
-        </div>
+    <form action="#" th:action="@{/create-user}" method="POST">
+        <p>
+            <label for="username">Username</label>:
+            <input type="text" id="username" name="username" required="true"/>
+        </p>
+        <p>
+            <label for="psw">Password</label>
+            <input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required="true"/>
+        </p>
+        <p>
+            <input type="submit" value="Submit"/>
+        </p>
+    </form>
+</div>
 
 <div id="message">
     <h3>Password must contain the following:</h3>
